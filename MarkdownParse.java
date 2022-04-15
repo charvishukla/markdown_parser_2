@@ -16,7 +16,7 @@ public class MarkdownParse {
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
-            if((markdown.substring(openParen + 1 ,closeParen).startsWith("https") == false) && markdown.substring(openParen+1, closeParen).endsWith(".com") == false){
+            if((markdown.substring(openParen + 1 ,closeParen).startsWith("https") == false) && markdown.substring(openParen+1, closeParen).endsWith(".html") == false){
                 toReturn.add(markdown.substring(openParen + 1, closeParen) + ".html");
             }
             else{
