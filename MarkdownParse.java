@@ -11,6 +11,7 @@ public class MarkdownParse {
     public static ArrayList<String> getLinksNew(String markdown) {
         ArrayList<String> toReturn = new ArrayList<>();
         // find the next [, then find the ], then find the (, then read link upto next )
+
         int currentIndex = 0;
         if(markdown.length() == 0){
             return(null);
@@ -20,21 +21,38 @@ public class MarkdownParse {
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
-            if((markdown.substring(openParen + 1 ,closeParen).startsWith("https") == false) && markdown.substring(openParen+1, closeParen).endsWith(".html") == false){
-                toReturn.add(markdown.substring(openParen + 1, closeParen) + ".html");
-            }
-            else{
-                toReturn.add(markdown.substring(openParen + 1, closeParen));
-            }
-            //toReturn.add(markdown.substring(openParen + 1, closeParen));
+            
+            if(openBracket == -1 && closeBracket == -1 && openParen == -1 && closeParen == -1){
+                System.out.println("This paragraph is not a link! Please enter a valid link");
+            }else{
+                if(openBracket == -1 ){
+                    System.out.println("Invalid input: missing open bracket");
+                    break;
+                }
+                else if(closeBracket == -1){
+                    System.out.println("Invalid input: missing closed bracket");
+                    break;
+                }
+                else if(openParen == -1){
+                    System.out.println("Invaid input: missing open parenthesis");
+                    break;
+                }
+                else if(closeParen == -1){
+                    System.out.println("Invalid input: missing close parenthesis");
+                    break;
+                }
+            }   
+            
+            toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
-            System.out.println("hello");
+
         }
+        
 
         return toReturn;
     }
 
-    public static ArrayList<String> getLinks(String markdown) {
+/**   public static ArrayList<String> getLinks(String markdown) {
         ArrayList<String> toReturn = new ArrayList<>();
         // find the next [, then find the ], then find the (, then read link upto next )
         int currentIndex = 0;
@@ -47,12 +65,12 @@ public class MarkdownParse {
             System.out.println(openParen);
             int closeParen = markdown.indexOf(")", openParen);
             System.out.println(closeParen);
-            toReturn.add(markdown.substring(openParen + 1, closeParen));
-            currentIndex = closeParen + 1;
+           
         }
 
         return toReturn;
     }
+ */
 
 
     public static void main(String[] args) throws IOException {
