@@ -36,6 +36,28 @@ public class MarkdownParseTest {
         if(content.length() == 0){
             assertEquals(null,null);
         }
-        //assertEquals(null,MarkdownParse.getLinks(content));
+        assertEquals(null,MarkdownParse.getLinksNew(content));
+    }
+
+    @Test
+    public void testGetLinksFile4() throws IOException{
+        Path fileName = Path.of("fail2.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> expectedList = new ArrayList<String>();
+        expectedList.add("https://instagram.com"); 
+        expectedList.add("https://twitter.com");
+        assertEquals(null,MarkdownParse.getLinksNew(content));
+
+    }
+
+    @Test
+    public void testGetLinksFile5() throws IOException{
+        Path fileName = Path.of("fail3.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> expectedList = new ArrayList<String>();
+        expectedList.add("google.com"); 
+        expectedList.add("twitter.com");
+        assertEquals(null,MarkdownParse.getLinksNew(content));
+
     }
 }
