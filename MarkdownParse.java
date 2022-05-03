@@ -8,10 +8,10 @@ import java.util.ArrayList;
 
 public class MarkdownParse {
 
-public static ArrayList<String> getLinksNew(String markdown) {
+/**
+ * public static ArrayList<String> getLinksNew(String markdown) {
         ArrayList<String> toReturn = new ArrayList<>();
         // find the next [, then find the ], then find the (, then read link upto next )
-
         int currentIndex = 0;
         if(markdown.length() == 0){
             return(null);
@@ -24,7 +24,8 @@ public static ArrayList<String> getLinksNew(String markdown) {
             
             if(openBracket == -1 && closeBracket == -1 && openParen == -1 && closeParen == -1){
                 System.out.println("This paragraph is not a link! Please enter a valid link");
-            }else{
+                break;
+            }
                 if(openBracket == -1 ){
                     System.out.println("Invalid input: missing open bracket");
                     break;
@@ -41,8 +42,7 @@ public static ArrayList<String> getLinksNew(String markdown) {
                     System.out.println("Invalid input: missing close parenthesis");
                     break;
                 }
-            }   
-            
+
             toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
 
@@ -51,6 +51,25 @@ public static ArrayList<String> getLinksNew(String markdown) {
 
         return toReturn;
     }
+ * 
+ */
+
+    public static ArrayList<String> getLinksNew(String markdown) {
+        ArrayList<String> toReturn = new ArrayList<>();
+        // find the next [, then find the ], then find the (, then read link upto next )
+        int currentIndex = 0;
+        while(currentIndex < markdown.length()) {
+            int openBracket = markdown.indexOf("[", currentIndex);
+            int closeBracket = markdown.indexOf("]", openBracket);
+            int openParen = markdown.indexOf("(", closeBracket);
+            int closeParen = markdown.indexOf(")", openParen);
+            toReturn.add(markdown.substring(openParen + 1, closeParen));
+            currentIndex = closeParen + 1;
+        }
+
+        return toReturn;
+    }
+
 
 
 
