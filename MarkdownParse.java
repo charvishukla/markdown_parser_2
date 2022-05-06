@@ -24,6 +24,7 @@ public static ArrayList<String> getLinksNew(String markdown) {
                 System.out.println("This paragraph is not a link! Please enter a valid link");
                 break;
             }
+
                 if(openBracket == -1 ){
                     System.out.println("Invalid input: missing open bracket");
                     break;
@@ -41,6 +42,7 @@ public static ArrayList<String> getLinksNew(String markdown) {
                     break;
                 }
 
+
             toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
 
@@ -49,10 +51,6 @@ public static ArrayList<String> getLinksNew(String markdown) {
 
         return toReturn;
     }
- 
-
-
-
 
     public static void main(String[] args) throws IOException {
         Path fileName = Path.of(args[0]);
