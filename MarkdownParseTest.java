@@ -25,7 +25,6 @@ public class MarkdownParseTest {
         String content = Files.readString(fileName);
         ArrayList<String> expectedList = new ArrayList<String>();
         expectedList.add("https://google.com");
-        expectedList.add("google.html");
         assertEquals(expectedList,MarkdownParse.getLinksNew(content));
     }
     @Test
@@ -46,7 +45,7 @@ public class MarkdownParseTest {
         ArrayList<String> expectedList = new ArrayList<String>();
         expectedList.add("https://instagram.com"); 
         expectedList.add("https://twitter.com");
-        assertEquals(null,MarkdownParse.getLinksNew(content));
+        assertEquals(content ,MarkdownParse.getLinksNew(content));
 
     }
 
@@ -56,8 +55,8 @@ public class MarkdownParseTest {
         String content = Files.readString(fileName);
         ArrayList<String> expectedList = new ArrayList<String>();
         expectedList.add("google.com"); 
-        expectedList.add("twitter.com");
-        assertEquals(null,MarkdownParse.getLinksNew(content));
+        assertEquals(content ,MarkdownParse.getLinksNew(content));
 
     }
 }
+ma
