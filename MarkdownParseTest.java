@@ -32,10 +32,7 @@ public class MarkdownParseTest {
         Path fileName = Path.of("fail1.md");
         String content = Files.readString(fileName);
         ArrayList<String> expectedList = new ArrayList<String>();
-        if(content.length() == 0){
-            assertEquals(null,null);
-        }
-        assertEquals(null,MarkdownParse.getLinksNew(content));
+        assertEquals(expectedList,MarkdownParse.getLinksNew(content));
     }
 
     @Test

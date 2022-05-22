@@ -14,6 +14,7 @@ public static ArrayList<String> getLinksNew(String markdown) {
         if(markdown.length() == 0){
             return(null);
         }
+        
         while(currentIndex < markdown.length()) {
             int openBracket = markdown.indexOf("[", currentIndex);
             int closeBracket = markdown.indexOf("]", openBracket);
@@ -47,7 +48,6 @@ public static ArrayList<String> getLinksNew(String markdown) {
             currentIndex = closeParen + 1;
 
         }
-        
 
         return toReturn;
     }
