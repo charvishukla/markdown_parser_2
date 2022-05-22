@@ -31,7 +31,7 @@ public class MarkdownParseTest {
     public void testGetLinksFile3() throws IOException{
         Path fileName = Path.of("fail1.md");
         String content = Files.readString(fileName);
-        ArrayList<String> expectedList = new ArrayList<String>();
+        ArrayList<String> expectedList = null;
         assertEquals(expectedList,MarkdownParse.getLinksNew(content));
     }
 
