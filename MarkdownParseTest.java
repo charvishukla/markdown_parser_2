@@ -52,7 +52,39 @@ public class MarkdownParseTest {
         String content = Files.readString(fileName);
         ArrayList<String> expectedList = new ArrayList<String>();
         expectedList.add("google.com"); 
-        assertEquals(expectedList ,MarkdownParse.getLinksNew(content));
+        assertEquals(expectedList, MarkdownParse.getLinksNew(content));
 
     }
+    // TEST FOR SNIPPET1
+    @Test
+    public void testGetLinksFile6() throws IOException{
+        Path fileName = Path.of("snippet1.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> expectedList = new ArrayList<String>();
+        expectedList.add("google.com");
+        assertEquals(expectedList, MarkdownParse.getLinksNew(content));
+    }
+
+    // TEST FOR SNIPPET2
+    @Test
+    public void testGetLinksFile7() throws IOException{
+        Path fileName = Path.of("snippet2.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> expectedList = new ArrayList<String>();
+        expectedList.add("a.com");
+        expectedList.add("a.com");
+        expectedList.add("example.com");
+        assertEquals(expectedList, MarkdownParse.getLinksNew(content));
+    }
+
+    // TEST FOR SNIPPET3
+    @Test
+    public void testGetLinksFile8() throws IOException{
+        Path fileName = Path.of("snippet3.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> expectedList = new ArrayList<String>();
+        expectedList.add("https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule");
+        assertEquals(expectedList, MarkdownParse.getLinksNew(content));
+    }
+
 }
